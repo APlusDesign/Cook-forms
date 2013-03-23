@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+		<title>jQuery selectBox (select replacement plugin)</title>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/fcuk.selectBox.js"></script>
+		<link type="text/css" rel="stylesheet" href="css/fcukforms.css">
+
+		<script type="text/javascript">
+
+			$(document).ready( function() { 
+				
+				// Methods 
+				$("#reset").click( function() {
+					$('[data-type="select"]').selectBox('reset');
+				});
+				$("#create").click( function() {
+					$('[data-type="select"]').selectBox();
+				});
+
+				$("#destroy").click( function() {
+					$('[data-type="select"]').selectBox('destroy');
+				});
+
+				$("#enable").click( function() {
+					$('[data-type="select"]').selectBox('enable');
+				});
+
+				$("#disable").click( function() {
+					$('[data-type="select"]').selectBox('disable');
+				});
+				
+				
+				
+				// Values
+				$("#value").click( function() {
+					$('[data-type="select"]').each(function() {
+						$("#console").append('Value of:  ' + $(this).attr('id') + ' = ' + $(this).data('value') + '<br>');
+					})
+				});
+				
+				$("#value-1").click( function() {
+					$('[data-type="select"]').selectBox('value', 1);
+				});
+				
+				$("#value-2").click( function() {
+					$('[data-type="select"]').selectBox('value', 2);
+				});
+
+				$("#value-2-4").click( function() {
+					$('[data-multiple="multiple"]').selectBox('value', [2, 4]);
+				});
+				
+				
+				// Transitions
+				$("#default").click( function() {
+					$('[data-type="select"]').selectBox('settings', {
+						'menuTransition': 'default',
+						'menuSpeed' : 0
+					});
+				});
+
+				$("#fade").click( function() {
+					$('[data-type="select"]').selectBox('settings', {
+						'menuTransition': 'fade',
+						'menuSpeed' : 'fast'
+					});
+				});
+
+				$("#slide").click( function() {
+					$('[data-type="select"]').selectBox('settings', {
+						'menuTransition': 'slide',
+						'menuSpeed' : 'fast'
+					});
+				});
+				
+				
+				// Console
+				$("#clear").click( function() {
+					$("#console").html('');
+				});
+				
+				
+				// Console logging events
+				$('[data-type="select"]')
+					.focus( function() {
+						$("#console").append('Focus on ' + $(this).data('name') + '<br>');
+						$("#console")[0].scrollTop = $("#console")[0].scrollHeight;
+					})
+					.blur( function() {
+						$("#console").append('Blur on ' + $(this).data('name') + '<br>');
+						$("#console")[0].scrollTop = $("#console")[0].scrollHeight;
+					})
+					.change( function() {
+						$("#console").append('Change on ' + $(this).data('name') + ': ' + $(this).data('value') + '<br>');
+						$("#console")[0].scrollTop = $("#console")[0].scrollHeight;
+					});
+					
+				
+				// Initialise	
+				$('[data-type="select"]').selectBox()		
+			});
+
+		</script>
+		<style>
+			[data-type="select"] {
+				width:150px;
+			}
+			.buttons {
+				margin:20px;
+			}
+			.buttons div {
+				margin:10px;
+			}
+			.buttons span {
+				display:inline-block;
+				padding:5px 10px;
+				background:#999;
+				cursor:pointer;
+			}
+			.buttons span:hover {
+				background:#e0e0e0;
+			}
+			p {
+				margin:0 0 5px;
+			}
+			.input-wrap {
+				margin:20px;
+			}
+		</style>
+	</head>
+
+	<body style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;">
+
+		
+
+			<div id="console" style="width: 50%; font-family: 'Courier New', monospace; border: solid 2px #000; background: #000; color: #FFF; height: 350px; overflow: auto; padding: 10px; float: right;"></div>
+
+			
+			<div class="input-wrap">
+				<p class="label">Standard select</p>
+				<ul id="standard-select" data-name="standard-select" data-type="select" tabindex="1">
+					<li data-value="1">Item 1</li>
+					<li data-value="2">Item 2</li>
+					<li data-value="3">rtem 3 has a really long label that will not interfere with the control's width</li>
+					<li data-value="4">Item 4</li>
+					<li data-value="5" data-disabled="disabled">Item 5 (disabled)</li>
+					<li data-value="6">Item 6</li>
+					<li data-value="7">Item 7</li>
+					<li data-value="8">Item 8</li>
+					<li data-value="9">Item 9</li>
+					<li data-value="10">Item 10</li>
+					<li data-value="11">Item 11</li>
+					<li data-value="12" data-selected="true">Item 12</li>
+					<li data-value="13">Item 13</li>
+					<li data-value="14">Item 14</li>
+					<li data-value="15">Item 15</li>
+					<li data-value="16">Item 16</li>
+					<li data-value="17">Item 17</li>
+					<li data-value="18">Item 18</li>
+					<li data-value="19">Item 19</li>
+					<li data-value="20">Item 20</li>
+				</ul>
+			</div>
+			
+			
+			<div class="input-wrap">
+				<p class="label">Standard select 2: showing option groups</p>
+				<div id="standard-select-2" data-name="standard-select-2" data-type="select" tabindex="2">
+					<ul data-label="optgroup1">
+						<li data-value="1">Item 1</li>
+						<li data-value="2">Item 2</li>
+						<li data-value="3">Item 3 has a really long label that will not interfere with the control's width</li>
+						<li data-value="4">Item 4</li>
+						<li data-value="5" data-disabled="disabled">Item 5 (disabled)</li>
+					</ul>	
+					<ul data-label="optgroup1">
+						<li data-value="6">Item 6</li>
+						<li data-value="7">Item 7</li>
+						<li data-value="8" data-selected="true">Item 8</li>
+						<li data-value="9">Item 9</li>
+						<li data-value="10">Item 10</li>
+						<li data-value="11">Item 11</li>
+						<li data-value="12">Item 12</li>
+						<li data-value="13">Item 13</li>
+					</ul>	
+				</div>
+			</div>
+			
+			
+			<div class="input-wrap">
+				<p class="label">Standard select 3: showing disbaled</p>
+				<div id="standard-select-3" data-name="standard-select-3" data-type="select" tabindex="3" data-disabled="true">
+					<li>Select something</li>
+					<li data-value="1">Item 1</li>
+					<li data-value="2">Item 2</li>
+				</div>
+			</div>
+			
+			
+			<div class="input-wrap">
+				<p class="label">Multi inline select</p>
+				<ul id="multi-inline-select" data-name="multi-inline-select" data-multiple="multiple" data-type="select" tabindex="4">
+					<li data-value="1" data-selected="true">Item 1</li>
+					<li data-value="2">Item 2</li>
+					<li data-value="3">Item 3</li>
+					<li data-value="4">Item 4</li>
+					<li data-value="5" data-disabled="disabled">Item 5 (disabled)</li>
+				</ul>
+			</div>
+			
+			<div class="input-wrap">
+				<p class="label">Single inline select: Showing option groups</p>
+				<div id="single-inline-select" data-name="single-inline-select" data-type="select" data-size="5" tabindex="5">
+					<ul data-label="optgroup1">
+						<li data-value="1">Item 1</li>
+						<li data-value="2" data-selected="true">Item 2</li>
+						<li data-value="3">Item 3</li>
+					</ul>	
+					<ul data-label="optgroup2">
+						<li data-value="4">Item 4</li>
+						<li data-value="5" data-disabled="disabled">Item 5 (disabled)</li>
+					</ul>
+				</div>
+			
+			</div>
+			
+			<div class="input-wrap">
+				<p class="label">Select from a select (yes works on both)</p>
+				<select id="select-dropdown" name="select-dropdown" data-type="select" tabindex="6">
+					<option value="1" class="test-class-1">Item 1</option>
+					<option value="2" class="test-class-2">Item 2</option>
+					<option value="3" class="test-class-3">Item 3 has a really long label that will not interfere with the control's width</option>
+					<option value="4" class="test-class-4">Item 4</option>
+					<option value="5" data-disabled="disabled">Item 5 (disabled)</option>
+					<option value="6">Item 6</option>
+					<option value="7">Item 7</option>
+					<option value="8">Item 8</option>
+					<option value="9">Item 9</option>
+					<option value="10">Item 10</option>
+					<option value="11">Item 11</option>
+					<option value="12">Item 12</option>
+					<option value="13">Item 13</option>
+					<option value="14">Item 14</option>
+					<option value="15">Item 15</option>
+					<option value="16">Item 16</option>
+					<option value="17">Item 17</option>
+					<option value="18">Item 18</option>
+					<option value="19">Item 19</option>
+					<option value="20">Item 20</option>
+				</select>	
+			</div>	
+			
+			<div class="input-wrap">
+				<p class="label">Multi select from a select (yes works on both)</p>
+				<select id="select-dropdown" name="select-dropdown" data-type="select" tabindex="6" data-multiple="multiple">
+					<optgroup label="optgroup1">
+						<option value="1" class="test-class-1">Item 1</option>
+						<option value="2" class="test-class-2">Item 2</option>
+						<option value="3" class="test-class-3">Item 3 has a really long label that will not interfere with the control's width</option>
+						<option value="4" class="test-class-4">Item 4</option>
+						<option value="5" data-disabled="disabled">Item 5 (disabled)</option>
+						<option value="6">Item 6</option>
+						<option value="7">Item 7</option>
+						<option value="8">Item 8</option>
+						<option value="9">Item 9</option>
+						<option value="10">Item 10</option>
+						<option value="11">Item 11</option>
+						<option value="12">Item 12</option>
+					</optgroup>	
+					<optgroup label="optgroup2">
+						<option value="13">Item 13</option>
+						<option value="14">Item 14</option>
+						<option value="15">Item 15</option>
+						<option value="16">Item 16</option>
+						<option value="17">Item 17</option>
+						<option value="18">Item 18</option>
+						<option value="19">Item 19</option>
+						<option value="20">Item 20</option>
+					</optgroup>	
+				</select>	
+			</div>	
+			
+			<hr>
+			
+			<div class="buttons">
+				<div>
+					Methods:
+					<span id="destroy">Destroy</span>
+					<span id="create">Create</span>
+					<span id="enable">Enable</span>
+					<span id="disable">Disable</span>
+					<span id="reset">Reset</span>
+				</div>
+
+				<div>
+					Values:
+					<span id="value">Values</span>
+					<span id="value-1">Value = 1</span>
+					<span id="value-2">Value = 2</span>
+					<span id="value-2-4">Value = [2, 4]</span>
+				</div>
+
+				<div>
+					Transitions:
+					<span id="default">Default</span>
+					<span id="fade">Fade</span>
+					<span id="slide">Slide</span>
+				</div>
+				
+				<div>
+					Clear:
+					<span id="clear">Clear console</span>
+				</div>
+			</div>
+			
+			<div style="clear:both"></div>
+
+	</body>
+
+</html>

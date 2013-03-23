@@ -1,0 +1,199 @@
+/**********************************/
+/* 
+	Fcuk forms - vanilla template 
+	
+	This css makes your form look exactly like an unstyled chrome form,
+	BUT, without random padding, random fonts, random margins, randm spacings random scrollbars
+	
+	Fcuk forms will look exactly the same in all browsers! 
+	(except ie6) because really why would you :/
+	
+*/
+
+.form .input-wrap, .form .submit {
+	clear:both;
+}
+.form p {
+	float:left;
+	width:150px;
+	margin:0;
+}
+.form .textbox, 
+.form .textarea,
+.form .select,
+.form .submit,
+.form .reset {
+	float:left;
+	border:1px solid #abadb3;
+}
+.form .select {
+	height:18px;
+} 
+.form .textbox {
+	width:150px;
+	height:22px;
+	overflow:hidden;
+}
+.form .textarea {
+	width:150px;
+	height:40px;
+	overflow:auto;
+}
+.form .radio,
+.form .checkbox {
+	width:13px;
+	height:13px;
+	float:left;
+}
+
+/***********/
+/* Radios */
+.form .radio {
+	background:transparent url('../images/form.png') 0 -31px no-repeat;
+}
+.form .fcuk-radio-selected {
+	background-position:-13px -31px!important;
+}
+
+/***************/
+/* Checkboxes */
+.form .checkbox {
+	background:transparent url('../images/form.png') 0 -18px no-repeat;
+}
+.form .fcuk-checkbox-selected {
+	background-position:-13px -18px!important;
+}
+
+/*****************************/
+/* Selects: are so annoying */
+.selectBox {
+	display:inline-block;
+}
+.selectBox-dropdown {
+	position: relative;
+	height:18px;
+	border:1px solid #abadb3;
+	cursor: default;
+	overflow: hidden;
+}
+.selectBox-dropdown .selectBox-label {
+	padding: 0 4px;
+	white-space: nowrap;
+}
+.selectBox-dropdown .selectBox-arrow {
+	position: absolute;
+	right: 0;
+	width: 21px;
+	height: 18px;
+	background: url(../images/form.png) 0 0 no-repeat;
+}
+.selectBox-dropdown .selectBox-arrow:hover {
+	background: url(../images/form.png) -21px 0 no-repeat;
+}
+
+/* Dropdown menu */
+.selectBox-dropdown-menu {
+	position: absolute;
+	z-index: 99999;
+	max-height: 200px;
+	min-height: 1em;
+	border:1px solid #abadb3;
+	background: #fff;
+	-moz-box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+	-webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+	box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+	overflow: auto;
+}
+
+/* Inline control */
+.selectBox-inline {
+	border:1px solid #abadb3;
+	overflow: auto;
+}
+.selectBox-inline:focus {
+	border-color: #666;
+}
+
+/* Options */
+.selectBox-options,
+.selectBox-options li,
+.selectBox-options li a {
+	list-style: none;
+	display: block;
+	cursor: default;
+	padding: 0;
+	margin: 0;
+}
+.selectBox-options li a {
+	line-height: 1.5;
+	padding: 0 4px;
+	white-space: nowrap;
+}
+.selectBox-options li.selectBox-hover a {
+	background-color: #eee;
+}
+.selectBox-options li.selectBox-disabled a {
+	color: #888;
+	background-color: transparent;
+}
+.selectBox-options li.selectBox-selected a {
+	color: #fff;
+	background-color: #3399ff;
+}
+.selectBox-options .selectBox-optgroup {
+	color: #666;
+	background: #eee;
+	font-weight: bold;
+	line-height: 1.5;
+	padding: 0 .3em;
+	white-space: nowrap;
+}
+
+/* Blurred states for inline */
+.selectBox-inline .selectBox-options li.selectBox-selected a {
+	color: #fff;
+	background-color: #6d6d6d;
+}
+.selectBox-inline.selectBox-active .selectBox-options li.selectBox-selected a {
+	background-color: #3399ff;
+}
+
+/* Disabled states */
+.selectBox.selectBox-disabled {
+	color: #888 !important;
+}
+.selectBox-dropdown.selectBox-disabled .selectBox-arrow {
+	opacity: .5;
+	filter: alpha(opacity=50);
+	border-color: #666;
+}
+.selectBox-inline.selectBox-disabled .selectBox-options a {
+	background-color: transparent !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Delete */
+/* Normal forms - vanilla template */
+/* These styles are only here because an unstyled form is so dam ugly and unruly */
+form .input-wrap, form input[type="submit"] {
+	clear:both;
+}
+form label {
+	float:left;
+	width:150px;
+	margin:0;
+}
+form input, form select, form textarea {
+	float:left;
+}
+/* End delete */

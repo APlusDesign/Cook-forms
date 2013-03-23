@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Fcuk forms</title>
+<link rel="stylesheet" href="css/fcukforms.css" media="all">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/fcuk.forms.js"></script>
+<script type="text/javascript" src="js/fcuk.selectBox.js"></script>
+<script>
+	
+	$(document).ready(function() {
+		$('div.form').fcukforms();
+		demoFcukForms();
+	});
+
+	
+	function demoFcukForms() {
+		// Get your fcuk form plugin reference
+		var myFormReference = $('#fcukform1').data('fcukforms');
+		
+ 		// Demo of how to get your form data
+		var submit = myFormReference.getFormSubmit();
+		if(submit.length) {
+			submit.on('click', function() {
+				console.log(myFormReference.getAllFormElements(true));
+			})
+		} else {
+			console.log('no submit button found');
+		}
+		
+		// Demo of how to reset your form
+		var reset = myFormReference.getFormReset();
+		if(reset.length) {
+			reset.on('click', function() {
+				return myFormReference.formReset();
+			})
+		} else {
+			console.log('no reset button found');
+		}
+	}
+</script>
+</head>
+<body>
+	
+	<h2>Un-styled normal inputs</h2>
+	<form>
+		<fieldset>
+			<div class="input-wrap">
+				<label>Textbox</label>
+				<input type="text" name="textbox-1" tabindex="20">
+			</div>
+			<div class="input-wrap">
+				<label>Textarea</label>
+				<textarea name="textarea-1" tabindex="21"></textarea>
+			</div>
+			<div class="input-wrap">
+				<label>Select</label>
+				<select name="select-1" tabindex="22">
+					<option value="1">Option 1</option>
+  					<option value="2">Option 2</option>
+				</select>
+			</div>
+			<div class="input-wrap">
+				<label>Select multiple</label>
+				<select multiple name="select-2" tabindex="23">
+					<option value="1">Option 1</option>
+  					<option value="2">Option 2</option>
+				</select>
+			</div>
+			<div class="input-wrap">
+				<label>Radio input</label>
+				<input type="radio" name="radio-1" value="1" tabindex="24">
+				<input type="radio" name="radio-1" value="2" tabindex="25">
+				<input type="radio" name="radio-1" value="3" tabindex="26">
+			</div>
+			<div class="input-wrap">
+				<label>Checkbox input</label>
+				<input type="checkbox" name="checkbox-1" value="1" tabindex="27">
+				<input type="checkbox" name="checkbox-1" value="2" tabindex="28">
+			</div>
+			<input type="submit" tabindex="29">
+			<input type="reset" tabindex="30">
+		</fieldset>
+	</form>
+	
+	
+	<h2>Fcuk forms inputs</h2>
+	<div class="form" id="fcukform1">
+		<div class="fieldset">
+			<div class="input-wrap">
+				<p>Textbox</p>
+				<div data-name="textbox-1" data-type="textbox" contenteditable="true" tabindex="1"></div>
+			</div>
+			<div class="input-wrap">
+				<p>Textarea</p>
+				<div data-name="textarea-1" data-type="textarea" contenteditable="true" tabindex="2"></div>
+			</div>
+			<div class="input-wrap">
+				<p class="label">Select</p>
+				<!-- I will get hidden and generate a fake select-->
+				<ul data-name="select-1" data-type="select" tabindex="3">
+					<li data-value="1">Option 1</li>
+  					<li data-value="2">Option 2</li>
+				</ul>
+				<!-- end hidden -->
+			</div>	
+			<div class="input-wrap">
+				<p class="label">Select multiple</p>
+				<!-- I will get hidden and generate a fake select-->
+				<ul data-name="select-2" data-type="select" data-size="3" data-multiple="true" tabindex="4">
+					<li data-value="1">Option 1</li>
+					<li data-value="2">Option 2</li>
+				</ul>
+				<!-- end hidden -->
+			</div>	
+			<div class="input-wrap">
+				<p>Radio input</p>
+				<div data-type="radio" data-name="radio-1" data-grouping="radio-group-1" data-value="3" tabindex="5"></div> 
+				<div data-type="radio" data-name="radio-2" data-grouping="radio-group-1" data-value="6" data-selected="true" tabindex="6"></div> 
+				<div data-type="radio" data-name="radio-3" data-grouping="radio-group-1" data-value="9" tabindex="7"></div> 
+			</div>
+			<div class="input-wrap">
+				<p>Checkbox input</p>
+				<div data-type="checkbox" data-name="check-1" data-value="banana" tabindex="8"></div>
+				<div data-type="checkbox" data-name="check-2" data-value="apple" data-selected="true" tabindex="9"></div>
+			</div>
+			<div data-type="submit" data-name="submit" tabindex="10">Submit</div>
+			<div data-type="reset" data-name="reset" tabindex="11">Reset</div>
+		</div>		
+	</div>			
+	
+	
+	
+</body>
+</html>
