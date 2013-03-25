@@ -329,15 +329,21 @@ if (jQuery)(function($) {
 						botmaxpos = toppos + options.data('originalHeight'),
 						winHeight = parseInt($(window).height());
 					
-					// body over
-					if(parseInt(botmaxpos) > winHeight) {	
-						options.css({
-							height: winHeight - (toppos+5) 
-						})
+					
+					
+					if(select.data('ontop')) {
+						toppos = (control.offset().top - 2) - options.height()
 					} else {
-						options.css({
-							height: ''
-						})
+						// body over
+						if(parseInt(botmaxpos) > winHeight) {	
+							options.css({
+								height: winHeight - (toppos+5) 
+							})
+						} else {
+							options.css({
+								height: ''
+							})
+						}
 					}
 					/*
 					if(parseInt(botmaxpos) > parseInt($(window).height())) {	
