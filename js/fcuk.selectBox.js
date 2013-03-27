@@ -129,8 +129,9 @@ if (jQuery)(function($) {
 							arrow = $('<span class="selectBox-arrow" />');
 							
 						label.attr('class', getLabelClass(select)).text(getLabelText(select));
-							
+						
 						options = getOptions(select, 'dropdown');
+						
 						options.appendTo('body');
 						control.data('selectBox-options', options).addClass('selectBox-dropdown').append(label).append(arrow).on('mousedown.selectBox', function(event) {
 							if (control.hasClass('selectBox-menuShowing')) {
@@ -163,7 +164,7 @@ if (jQuery)(function($) {
 							.data('selectBox-control', control)
 							.data('selectBox-settings', settings)
 							.hide();
-										
+									
 						// Update label
 						var 
 							selected 	= select.find('[data-selected="true"]'),
@@ -271,6 +272,7 @@ if (jQuery)(function($) {
 						disableSelection(options);
 						
 						options.data({'originalHeight' : options.height()})
+						
 						return options;
 					}
 				};
@@ -491,6 +493,7 @@ if (jQuery)(function($) {
 						});
 						original
 							.attr('data-selected', 'true')
+							.attr('selected', 'selected')
 							.data('selected', 'true');
 					}
 					// Remember most recently selected item
