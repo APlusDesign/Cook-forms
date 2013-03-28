@@ -1,4 +1,4 @@
-Fcuk-forms
+Cook forms
 ==========
 
-Never use forms again because forms suck
+Making forms more digestible  
