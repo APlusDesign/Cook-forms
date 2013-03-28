@@ -1,24 +1,24 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Fcuk forms</title>
-<link rel="stylesheet" href="css/fcukforms.css" media="all">
+<title>Cook forms</title>
+<link rel="stylesheet" href="css/cook.forms.css" media="all">
 <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/fcuk.forms.js"></script>
-<script type="text/javascript" src="js/fcuk.selectBox.js"></script>
+<script type="text/javascript" src="js/cook.forms.js"></script>
+<script type="text/javascript" src="js/cook.selectBox.js"></script>
 <script>
 	
 	$(document).ready(function() {
-		$('div.form').fcukforms();
-		demoFcukForms();
+		$('div.form').cookforms();
+		demoCookForms();
 	});
 
 	
-	function demoFcukForms() {
-		// Get your fcuk form plugin reference
-		var myFormReference = $('#fcukform1').data('fcukforms');
+	function demoCookForms() {
+		// Get your cookforms plugin reference
+		var myFormReference = $('#cookform1').data('cookforms');
 		
- 		// Demo of how to get your form data
+ 		// Demo: how to get your form data
 		var submit = myFormReference.getFormSubmit();
 		if(submit.length) {
 			submit.on('click', function() {
@@ -28,7 +28,7 @@
 			console.log('no submit button found');
 		}
 		
-		// Demo of how to reset your form
+		// Demo: how to reset your form
 		var reset = myFormReference.getFormReset();
 		if(reset.length) {
 			reset.on('click', function() {
@@ -84,8 +84,8 @@
 	</form>
 	
 	
-	<h2>Fcuk forms inputs</h2>
-	<div class="form" id="fcukform1">
+	<h2>Cook forms inputs</h2>
+	<div class="form" id="cookform1">
 		<div class="fieldset">
 			<div class="input-wrap">
 				<p>Textbox</p>

@@ -3,8 +3,8 @@
  * This plugin allows you to use a custom Checkboxs, Radio buttons, Textboxes, textareas and selects. Its very simple, small and easy to use.
  *
  *	Usage
- *  $('div.form').fcukforms(); 
- * 	var myPluginReference = $('#fcukform1').data('fcukforms');
+ *  $('div.form').cookforms(); 
+ * 	var myPluginReference = $('#cookform1').data('cookforms');
  * 	myPluginReference.getAllFormElements(); 
  *  
  * 
@@ -14,19 +14,19 @@
  */
  
 (function($){
-   var FcukForms = function(element, options)
+   var CookForms = function(element, options)
    {
 		var 
 			form 		= $(element),
 			$this 		= this,
 			settings 	= $.extend({
-							radioSelectClass: 'fcuk-radio-selected',
-							checkboxSelectClass: 'fcuk-checkbox-selected',
+							radioSelectClass: 'radio-selected',
+							checkboxSelectClass: 'checkbox-selected',
 							registerPlugins: {
 								textbox: null,
 								textarea: null,
-								radio: 'fcukradio',
-								checkbox: 'fcukcheckbox',
+								radio: 'cookradio',
+								checkbox: 'cookcheckbox',
 								select: 'selectBox'
 							},
 							applyStyles: true
@@ -91,10 +91,10 @@
 				var length = objs.length;
 				for(var i=0;i<length;i++) {
 					var tmp = $(objs[i])
-					tmp.data({'value': null}).attr('data-value', 'false');
 					tmp.selectBox('reset');
 				}		
 			};
+			// Resets radios and checkboxes 
 			this.radioCheckReset = function(objs)
 			{
 				var length = objs.length;
@@ -178,18 +178,18 @@
 		this.init();
    };
 
-   $.fn.fcukforms = function(options)
+   $.fn.cookforms = function(options)
    {
 	   return this.each(function()
 	   {
 			// obj becomes the object the plugin is attached to.
 			var obj = $(this);
 			// Return if obj already has a plugin instance
-			if (obj.data('fcukforms')) return;
+			if (obj.data('cookforms')) return;
 			// pass options to plugin constructor
-			var fcukforms = new FcukForms(obj, options);
+			var cookforms = new CookForms(obj, options);
 			// Store plugin object in obj's data
-			obj.data('fcukforms', fcukforms);
+			obj.data('cookforms', cookforms);
 	   });
    };
 })(jQuery);
@@ -216,12 +216,12 @@
 
 // Checkboxes 
 (function($) {
-  $.fn.fcukcheckbox = function(opts) {
+  $.fn.cookcheckbox = function(opts) {
 	
 	// Options
 	var options = { 
-		elClass: 'fcuk-checkbox', 
-		elSelectedClass: 'fcuk-checkbox-selected'
+		elClass: 'cook-checkbox', 
+		elSelectedClass: 'checkbox-selected'
 	};
 	options = jQuery.extend(opts, options);
 	
@@ -247,12 +247,12 @@
 
 // Radio buttons
 (function($) {
-  $.fn.fcukradio = function(opts) {
+  $.fn.cookradio = function(opts) {
 	
 	// Options
 	var options = { 
-		elClass: 'fcuk-radio',	
-		selectedCls: 'fcuk-radio-selected'
+		elClass: 'cook-radio',	
+		selectedCls: 'radio-selected'
 	};
 	options = jQuery.extend(opts, options);
 	
@@ -280,12 +280,12 @@
 
 // Textbox (does absolutely nothing)
 (function($) {
-  $.fn.fcuktextbox = function(opts) {
+  $.fn.cooktextbox = function(opts) {
 	
 	// Options
 	var options = { 
-		elClass: 'fcuk-textbox', 
-		elSelectedClass: 'fcuk-textbox-selected'
+		elClass: 'cook-textbox', 
+		elSelectedClass: 'cook-textbox-selected'
 	};
 	options = jQuery.extend(opts, options);
 	
@@ -299,12 +299,12 @@
 
 // Textarea (does absolutely nothing)
 (function($) {
-  $.fn.fcuktextarea = function(opts) {
+  $.fn.cooktextarea = function(opts) {
 	
 	// Options
 	var options = { 
-		elClass: 'fcuk-textarea', 
-		elSelectedClass: 'fcuk-textarea-selected'
+		elClass: 'cook-textarea', 
+		elSelectedClass: 'cook-textarea-selected'
 	};
 	options = jQuery.extend(opts, options);
 	
@@ -316,4 +316,4 @@
 })(jQuery);
 
 
-// Selects (are complex so see fcuk.selectBox.js)
+// Selects (are complex so see cook.selectBox.js)

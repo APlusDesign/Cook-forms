@@ -1,6 +1,6 @@
 /**********************************/
 /* 
-	Fcuk forms - vanilla template 
+	Cook forms - vanilla template 
 	
 	This css makes your form look exactly like an unstyled chrome form,
 	BUT, without random padding, random fonts, random margins, randm spacings random scrollbars
@@ -51,7 +51,7 @@
 .form .radio {
 	background:transparent url('../images/form.png') 0 -31px no-repeat;
 }
-.form .fcuk-radio-selected {
+.form .radio-selected {
 	background-position:-13px -31px!important;
 }
 
@@ -60,7 +60,7 @@
 .form .checkbox {
 	background:transparent url('../images/form.png') 0 -18px no-repeat;
 }
-.form .fcuk-checkbox-selected {
+.form .checkbox-selected {
 	background-position:-13px -18px!important;
 }
 
