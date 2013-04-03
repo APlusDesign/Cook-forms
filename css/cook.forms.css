@@ -185,6 +185,9 @@
 /* Delete */
 /* Normal forms - vanilla template */
 /* These styles are only here because an unstyled form is so dam ugly and unruly */
+form {
+	width:400px;
+}
 form .input-wrap, form input[type="submit"] {
 	clear:both;
 }
