@@ -17,6 +17,14 @@
  * @date 2/28/2013
  */
  
+ /**
+ * Cook forms element plugins
+ * Use whatever plugins you want to provide functionality to your form elements, these are provided as working examples, you may write your own at will
+ *
+ * IMPORTANT: All plugins must have a public reset method, else the form can't be reset, it will fail with a console log if your plugins don't have reset methods..
+ */
+ 
+ 
 (function($){
    var CookForms = function(element, options)
    {
@@ -36,7 +44,16 @@
 		
 		// Public methods
 		// They mostly just return forms objs and form objs collections
-		
+		this.init = function () {
+			// Avoids CSS selectors like div[data-type="radio"] in your CSS in favor of .radio, .checkbox, .textarea, .textbox, .select
+			applyClassName();
+			/* Runs the associated default plugin for each element, which can be over-ridden via settings/options */
+			runPlugin("textbox", settings.registerPlugins.textbox);
+			runPlugin("textarea", settings.registerPlugins.textarea);
+			runPlugin("checkbox", settings.registerPlugins.checkbox);
+			runPlugin("radio", settings.registerPlugins.radio);
+			runPlugin("select", settings.registerPlugins.select);
+		};
 		// no cook form formatting
 		this.formElements = function()
 		{
@@ -131,7 +148,6 @@
 				}
 			}	
 		};	
-		
 		// Private method: format form objects for actual output in JSON object
 		var formatObjects = function(objs, grouped)
 		{
@@ -169,7 +185,6 @@
 			}
 			return formObjs;
 		};
-		
 		// Private method: Simple check for elements and existing plugin namespace
 		var runPlugin = function(type, plugin) {
 			var objs = form.find('[data-type="'+type+'"]')
@@ -178,7 +193,6 @@
 				objs.data('pluginName', plugin);
 			}
 		};
-		
 		// Private method: Applies a named style based off the data-type
 		var applyClassName = function() {
 			if(settings.applyStyles) {
@@ -189,16 +203,6 @@
 			}
 		};
 		
-		this.init = function () {
-			// Avoids CSS selectors like div[data-type="radio"] in your CSS in favor of .radio, .checkbox, .textarea, .textbox, .select
-			applyClassName();
-			/* Runs the associated default plugin for each element, which can be over-ridden via settings/options */
-			runPlugin("textbox", settings.registerPlugins.textbox);
-			runPlugin("textarea", settings.registerPlugins.textarea);
-			runPlugin("checkbox", settings.registerPlugins.checkbox);
-			runPlugin("radio", settings.registerPlugins.radio);
-			runPlugin("select", settings.registerPlugins.select);
-		};
 		
 		// Create the correct scope for this plugin
 		this.init();
@@ -243,141 +247,5 @@
 
 
 
-/**
- * Cook forms element plugins
- * Use whatever plugins you want to provide functionality to your form elements, these are provided as working examples, you may write your own at will
- *
- * IMPORTANT: All plugins must have a public reset method, else the form can't be reset, it will fail with a console log if your plugins don't have reset methods..
- */
- 
-// Hastily written plugin for checkbox functionality
-// Checkboxes 
-(function($) {
-  $.fn.cookCheckbox = function(opts) {
-	
-	// Options
-	var options = { 
-		elClass: 'cook-checkbox', 
-		elSelectedClass: 'checkbox-selected'
-	};
-	options = jQuery.extend(opts, options);
-	
-	// Checkbox logic
-	return this.each(function() {
-		var $this = $(this);
-		$this.addClass(options.elClass)
-		$this.on('click', function() {
-			var $this = $(this);
-			if($this.data('selected')) { 
-				$this.data('selected', null).attr('data-selected', null).removeClass(options.elSelectedClass);
-			} else {	
-				$this.data('selected', 'true').attr('data-selected', 'true').addClass(options.elSelectedClass);
-			}
-		});
-		if ($this.data('selected')) {
-			$this.addClass(options.elSelectedClass);    		
-		}
-		this.reset = function() {
-			$this
-				.data({'selected': null})
-				.attr('data-selected', null)
-				.removeClass(options.elSelectedClass)	
-		}
-		$this.data('cookCheckbox', this)
-	});
-  }
-})(jQuery);
 
 
-// Hastily written plugin for radio functionality
-// Radio buttons
-(function($) {
-  $.fn.cookRadio = function(opts) {
-	
-	// Options
-	var options = { 
-		elClass: 'cook-radio',	
-		elSelectedClass: 'radio-selected'
-	};
-	options = jQuery.extend(opts, options);
-	
-	// Radio logic
-	return this.each(function() {
-		var $this = $(this);
-		$this.addClass(options.elClass);
-		$this.on('click', function() {
-			var $this = $(this);
-			// radio button may contain groups! - so check for group
-			if(!$this.data('selected')) { 
-				$('div[data-grouping="'+$this.data('grouping')+'"]').each(function(e, v) {
-					$(this).data('selected', null).attr('data-selected', null).removeClass(options.elSelectedClass);
-				});
-				$this.data('selected', 'true').attr('data-selected', 'true').addClass(options.elSelectedClass);
-			}
-		});
-		if($this.data('selected')) {
-			  $this.addClass(options.elSelectedClass);    		
-		}    
-		this.reset = function() {
-			$this
-				.data({'selected': null})
-				.attr('data-selected', null)
-				.removeClass(options.elSelectedClass)	
-		}
-		$this.data('cookRadio', this)
-	});
-  }
-})(jQuery);
-
-
-// Hastily written plugin for textbox functionality
-// Textbox (does absolutely nothing)
-(function($) {
-  $.fn.cookTextbox = function(opts) {
-	
-	// Options
-	var options = { 
-		elClass: 'cook-textbox', 
-		elSelectedClass: 'cook-textbox-selected'
-	};
-	options = jQuery.extend(opts, options);
-	
-	// Checkbox logic
-	return this.each(function() {
-		var $this = $(this);
-		// Reset method
-		this.reset = function() {
-			$this.html('').data('value', null);;
-		}
-		$this.data('cookTextbox', this)
-	});
-  }
-})(jQuery);
-
-
-// Hastily written plugin for textarea functionality
-// Textarea (does absolutely nothing)
-(function($) {
-  $.fn.cookTextarea = function(opts) {
-	
-	// Options
-	var options = { 
-		elClass: 'cook-textarea', 
-		elSelectedClass: 'cook-textarea-selected'
-	};
-	options = jQuery.extend(opts, options);
-	
-	// Checkbox logic
-	return this.each(function() {
-		var $this = $(this);
-		// Reset method
-		this.reset = function() {
-			$this.html('').data('value', null);
-		}
-		$this.data('cookTextarea', this)
-	});
-  }
-})(jQuery);
-
-
-// Selects (are complex so see cook.selectBox.js)
