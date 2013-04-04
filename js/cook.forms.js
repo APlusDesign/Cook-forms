@@ -83,11 +83,11 @@
 		{
 			// I've exposed these as public methods so you can reset as you like
 			// This is just a method to reset all at once.
-			this.textboxReset()
-			this.textareaReset()
-			this.checkboxReset()
-			this.radioReset()
-			this.selectReset()
+			this.textboxReset();
+			this.textareaReset();
+			this.checkboxReset();
+			this.radioReset();
+			this.selectReset();
 		};
 		// Resets textboxes : uses textboxes plugin, public reset() 
 		this.textboxReset = function()
@@ -175,7 +175,7 @@
 			var objs = form.find('[data-type="'+type+'"]')
 			if(objs.length && plugin) {
 				objs[plugin]();
-				objs.data('pluginName', plugin)
+				objs.data('pluginName', plugin);
 			}
 		};
 		
@@ -184,23 +184,20 @@
 			if(settings.applyStyles) {
 				$this.formElements().each(function() {
 					var el = $(this);
-					el.addClass(el.data('type'))
+					el.addClass(el.data('type'));
 				})
 			}
 		};
 		
 		this.init = function () {
-			
 			// Avoids CSS selectors like div[data-type="radio"] in your CSS in favor of .radio, .checkbox, .textarea, .textbox, .select
 			applyClassName();
-			
 			/* Runs the associated default plugin for each element, which can be over-ridden via settings/options */
-			runPlugin("textbox", settings.registerPlugins.textbox)
-			runPlugin("textarea", settings.registerPlugins.textarea)
-			runPlugin("checkbox", settings.registerPlugins.checkbox)
-			runPlugin("radio", settings.registerPlugins.radio)
-			runPlugin("select", settings.registerPlugins.select)
-			
+			runPlugin("textbox", settings.registerPlugins.textbox);
+			runPlugin("textarea", settings.registerPlugins.textarea);
+			runPlugin("checkbox", settings.registerPlugins.checkbox);
+			runPlugin("radio", settings.registerPlugins.radio);
+			runPlugin("select", settings.registerPlugins.select);
 		};
 		
 		// Create the correct scope for this plugin
@@ -286,7 +283,7 @@
 				.attr('data-selected', null)
 				.removeClass(options.selectedCls)	
 		}
-		$this.data('cookcheckbox', this)
+		$this.data('cookCheckbox', this)
 	});
   }
 })(jQuery);
@@ -327,7 +324,7 @@
 				.attr('data-selected', null)
 				.removeClass(options.selectedCls)	
 		}
-		$this.data('cookradio', this)
+		$this.data('cookRadio', this)
 	});
   }
 })(jQuery);
@@ -352,7 +349,7 @@
 		this.reset = function() {
 			$this.html('').data('value', null);;
 		}
-		$this.data('cooktextbox', this)
+		$this.data('cookTextbox', this)
 	});
   }
 })(jQuery);
@@ -377,7 +374,7 @@
 		this.reset = function() {
 			$this.html('').data('value', null);
 		}
-		$this.data('cooktextarea', this)
+		$this.data('cookTextarea', this)
 	});
   }
 })(jQuery);
