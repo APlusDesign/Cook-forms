@@ -281,7 +281,7 @@
 			$this
 				.data({'selected': null})
 				.attr('data-selected', null)
-				.removeClass(options.selectedCls)	
+				.removeClass(options.elSelectedClass)	
 		}
 		$this.data('cookCheckbox', this)
 	});
@@ -297,7 +297,7 @@
 	// Options
 	var options = { 
 		elClass: 'cook-radio',	
-		selectedCls: 'radio-selected'
+		elSelectedClass: 'radio-selected'
 	};
 	options = jQuery.extend(opts, options);
 	
@@ -310,19 +310,19 @@
 			// radio button may contain groups! - so check for group
 			if(!$this.data('selected')) { 
 				$('div[data-grouping="'+$this.data('grouping')+'"]').each(function(e, v) {
-					$(this).data('selected', null).attr('data-selected', null).removeClass(options.selectedCls);
+					$(this).data('selected', null).attr('data-selected', null).removeClass(options.elSelectedClass);
 				});
-				$this.data('selected', 'true').attr('data-selected', 'true').addClass(options.selectedCls);
+				$this.data('selected', 'true').attr('data-selected', 'true').addClass(options.elSelectedClass);
 			}
 		});
 		if($this.data('selected')) {
-			  $this.addClass(options.selectedCls);    		
+			  $this.addClass(options.elSelectedClass);    		
 		}    
 		this.reset = function() {
 			$this
 				.data({'selected': null})
 				.attr('data-selected', null)
-				.removeClass(options.selectedCls)	
+				.removeClass(options.elSelectedClass)	
 		}
 		$this.data('cookRadio', this)
 	});
