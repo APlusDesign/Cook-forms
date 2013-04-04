@@ -163,6 +163,7 @@ if (jQuery)(function($) {
 							.addClass('selectBox')
 							.data('selectBox-control', control)
 							.data('selectBox-settings', settings)
+							.data('selectBox', this)
 							.hide();
 									
 						// Update label
@@ -737,6 +738,12 @@ if (jQuery)(function($) {
 			var helperSelectBoxActive = function(control) {
 				return control.hasClass('selectBox-active');
 			}
+			
+			this.reset = function() {
+				$(this).each(function() {
+					setReset(this);
+				});
+			}
 				
 			//
 			// Public methods
@@ -793,8 +800,11 @@ if (jQuery)(function($) {
 				});
 				break;
 			default:
+				var $this = this;
 				$(this).each(function() {
 					init(this, method);
+					// little hack for cook forms
+					$(this).data('selectBox', $this)
 				});
 				break;
 			}
