@@ -39,7 +39,7 @@ if (jQuery)(function($) {
 							'title': select.attr('title') || '',
 							'tabindex': parseInt(select.attr('tabindex'))
 						})
-						.css('width', select.outerWidth())
+						.css('width', select.outerWidth() || 'auto')
 						.on('focus.selectBox', function() {
 							if (this !== document.activeElement && document.body !== document.activeElement) {
 								$(document.activeElement).blur();
