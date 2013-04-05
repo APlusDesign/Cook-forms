@@ -1,11 +1,15 @@
+body {
+	font-family: Arial, Helvetica, sans-serif; font-size: 14px;
+}
+
 /**********************************/
 /* 
 	Cook forms - vanilla template 
 	
 	This css makes your form look exactly like an unstyled chrome form,
-	BUT, without random padding, random fonts, random margins, randm spacings random scrollbars
+	BUT, without random padding, random fonts, random margins, randm spacings, random scrollbars and generally other crap you wouldn't expect
 	
-	Fcuk forms will look exactly the same in all browsers! 
+	Cook forms will look exactly the same in all browsers! 
 	(except ie6) because really why would you :/
 	
 */

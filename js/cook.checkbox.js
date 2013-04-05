@@ -12,7 +12,10 @@
 	
 	// Checkbox logic
 	return this.each(function() {
-		var $this = $(this);
+		var 
+			$this = $(this),
+			label = $('[data-name-label="'+$this.data('name')+'"]');
+			
 		$this.addClass(options.elClass)
 		$this.on('click', function() {
 			var $this = $(this);
@@ -24,6 +27,12 @@
 		});
 		if ($this.data('selected')) {
 			$this.addClass(options.elSelectedClass);    		
+		}
+		// Find label
+		if(label.length) {
+			label.on('click', function() {
+				$this.trigger('click');
+			})
 		}
 		this.reset = function() {
 			$this

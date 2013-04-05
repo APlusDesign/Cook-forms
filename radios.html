@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Cook forms</title>
+<link rel="stylesheet" href="css/cook.forms.css" media="all">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/cook.forms.js"></script>
+<script type="text/javascript" src="js/cook.radio.js"></script>
+<script>
+	
+	$(document).ready(function() {
+		$('div.form').cookforms();
+	});
+	
+	// Todo: hook up some example events into console.
+	
+</script>
+<style>
+	.form {
+		float:left;
+		margin:20px;
+	}
+	.form [data-name-label] {
+		display: inline-block;
+		width:auto;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		margin-right:20px;
+	}
+</style>
+</head>
+<body>
+	
+	<div id="console" style="width: 50%; font-family: 'Courier New', monospace; border: solid 2px #000; background: #000; color: #FFF; height: 350px; overflow: auto; padding: 10px; float: right;"></div>
+	
+	<h2>Cook forms radios</h2>
+	<div class="form" id="cookform1">
+		<div class="fieldset">
+			<div class="input-wrap">
+				<p>Radio input</p>
+				<div data-type="radio" data-name="radio-1" data-grouping="radio-group-1" data-value="3" tabindex="5"></div> 
+				<p data-name-label="radio-1">label</p>
+				<div data-type="radio" data-name="radio-2" data-grouping="radio-group-1" data-value="6" data-selected="true" tabindex="6"></div> 
+				<p data-name-label="radio-2">label</p>
+				<div data-type="radio" data-name="radio-3" data-grouping="radio-group-1" data-value="9" tabindex="7"></div> 
+				<p data-name-label="radio-3">label</p>
+			</div>
+		</div>		
+	</div>			
+	
+	
+	
+</body>
+</html>
